@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DirektoriKaryawan.Models;
-
+//test
 namespace DirektoriKaryawan.Controllers
 {
     public class HomeController : Controller
