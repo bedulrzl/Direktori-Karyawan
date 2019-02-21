@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DirektoriKaryawan.Data.Migrations
+namespace DirektoriKaryawan.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class karyawan : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
