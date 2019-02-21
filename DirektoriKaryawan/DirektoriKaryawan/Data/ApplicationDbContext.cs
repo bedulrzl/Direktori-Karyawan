@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using DirektoriKaryawan.Models;
 
 namespace DirektoriKaryawan.Data
 {
@@ -12,5 +13,6 @@ namespace DirektoriKaryawan.Data
             : base(options)
         {
         }
+        public DbSet<DirektoriKaryawan.Models.Karyawan> Karyawan { get; set; }
     }
 }
