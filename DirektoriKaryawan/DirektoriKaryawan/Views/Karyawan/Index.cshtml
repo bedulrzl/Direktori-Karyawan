@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table id="tablekaryawan" class="table">
     <thead>
         <tr>
             <th>
@@ -21,21 +21,55 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nama)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Jabatan)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.karyawanID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.karyawanID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.karyawanID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
+    @*
+            <tbody>
+
+                @foreach (var item in Model) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nama)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Jabatan)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.karyawanID">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.karyawanID">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.karyawanID">Delete</a>
+                            </td>
+                        </tr>
+                }
+
+        </tbody>
+    *@
+    @section Scripts {
+        <script>
+            var dataTable
+
+            $(document).ready(function () {
+                dataTable = $('#tablekaryawan').DataTable({
+                    "ajax": {
+                        "url": "/api/karyawan",
+                        "type": "GET",
+                        "datatype": "json",
+                        "dataSrc": ''
+                    },
+                    "columns": [
+                        { "data": "nama" },
+                        { "data": "jabatan" },
+                        {
+
+                            "render": function (data, type, full, meta) {
+                                return '<a class="btn btn-success" href="/Karyawan/Edit/' + full.id + '">Edit</a>'
+                            }
+                        }
+
+                    ],
+                    "language": {
+                        "emptyTable": "no data found."
+                    }
+                });
+            });
+        </script>
+    }
 </table>
